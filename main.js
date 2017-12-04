@@ -1,55 +1,3 @@
-// var StrangerCards = {};
-
-// StrangerCards.core = {
-// 	init : function () {
-// 		StrangerCards.cards.init();
-// 	}
-// };
-
-// StrangerCards.data = {
-// 	11 : {
-// 		name : 'Eleven',
-// 		image : 'https://vignette.wikia.nocookie.net/strangerthings8338/images/b/b0/ST2-Final_poster.jpg/revision/latest?cb=20171022194958',
-// 		text : 'Lorem ipsum dolor sit amet'
-// 	}
-// };
-
-// StrangerCards.cards = {
-// 	template : 
-// 		// `<div class="card-wrap">
-// 		// 	<div class="card" style="transform: rotateY(0deg) rotateX(0deg);">
-// 		// 		<div class="card-bg" style="background-image: url('%image%'); transform: translateX(0px) translateY(0px);"></div>
-// 		// 		<div class="card-info">
-// 		// 			<div class="h1">%name%</div>
-// 		// 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-// 		// 		</div>
-// 		// 	</div>
-// 		// </div>`,
-// 		`<card data-image="%image%">
-// 			<div class="h1" slot="header">%name%</div>
-// 			<p slot="content">%text%</p>
-// 		</card>`,
-
-// 	init : function () {
-// 		$.each(StrangerCards.data, function(cardIndex, cardVal) {
-// 			var template = StrangerCards.cards.template;
-
-// 			$.each(cardVal, function(dataIndex, dataVal) {
-// 				template = template.replace('%' + dataIndex + '%', dataVal)
-// 			});
-
-// 			var $template = $(template);
-
-// 			$('#card-container').append($template);
-// 		});
-
-		
-// 	}
-// };
-
-
-// $(StrangerCards.core.init);
-
 Vue.component('card', {
 	template: `
 		<div class="card-wrap" @mousemove="handleMouseMove" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" ref="card">
@@ -117,11 +65,43 @@ Vue.component('card', {
 			this.mouseLeaveDelay = setTimeout(()=>{
 				this.mouseX = 0;
 				this.mouseY = 0;
-			}, 1000);
+			}, 500);
 		}
 	}
 });
 
-const app = new Vue({
-  el: '#card-container'
-});
+StrangerCards.main = {
+	init : function () {
+		StrangerCards.cards.init();
+
+		const app = new Vue({
+			el: '#card-container'
+		});
+	}
+};
+
+StrangerCards.cards = {
+	template : 
+		`<card data-image="%image%">
+			<div class="h1" slot="header">%name%</div>
+			<p slot="content">%text%</p>
+		</card>`,
+
+	init : function () {
+		$.each(StrangerCards.data, function(cardIndex, cardVal) {
+			var template = StrangerCards.cards.template;
+
+			$.each(cardVal, function(dataIndex, dataVal) {
+				template = template.replace('%' + dataIndex + '%', dataVal)
+			});
+
+			var $template = $(template);
+
+			$('#card-container').append($template);
+		});
+
+		
+	}
+};
+
+$(StrangerCards.main.init);

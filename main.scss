@@ -102,36 +102,32 @@ main{
 	cursor: pointer;
 	
 	&:hover {
-		.card-info {
-			transform: translateY(0);
-		}
-		.card-info p {
-			opacity: 1;
-		}
-		.card-info, .card-info p {
-			transition: 0.6s $hoverEasing;
-		}
-		.card-info:after {
-			transition: 5s $hoverEasing;
-			opacity: 1;
-			transform: translateY(0);
-		}
+		// .card-info {
+		// 	transform: translateY(0);
+		// }
+		// .card-info p {
+		// 	opacity: 1;
+		// }
+		// .card-info, .card-info p {
+		// 	transition: 0.6s $hoverEasing;
+		// }
+		// .card-info:after {
+		// 	transition: 5s $hoverEasing;
+		// 	opacity: 1;
+		// 	transform: translateY(0);
+		// }
 		.card-bg {
-			transition: 
-			0.6s $hoverEasing,
-			opacity 5s $hoverEasing;
-			opacity: 0.8;
+			transition: 0.6s $hoverEasing;//, opacity 5s $hoverEasing;
+			// opacity: 0.8;
 		}
 		.card {
-			transition:
-			0.6s $hoverEasing,
-			box-shadow 2s $hoverEasing;
-			box-shadow:
-			rgba(white, 0.2) 0 0 40px 5px,
-			rgba(white, 1) 0 0 0 1px,
-			rgba(black, 0.66) 0 30px 60px 0,
-			inset #333 0 0 0 5px,
-			inset white 0 0 0 6px;
+			transition: 0.6s $hoverEasing;//, box-shadow 2s $hoverEasing;
+			// box-shadow:
+			// rgba(white, 0.2) 0 0 40px 5px,
+			// rgba(white, 1) 0 0 0 1px,
+			// rgba(black, 0.66) 0 30px 60px 0,
+			// inset #333 0 0 0 5px,
+			// inset white 0 0 0 6px;
 		}
 	}
 }
@@ -146,10 +142,10 @@ main{
 	background-color: #333;
 	overflow: hidden;
 	border-radius: calculateRem(10px);
-	box-shadow:
-	rgba(black, 0.66) 0 calculateRem(30px) calculateRem(60px) 0,
-	inset #333 0 0 0 calculateRem(5px),
-	inset rgba(white, 0.5) 0 0 0 calculateRem(6px);
+	// box-shadow:
+	// rgba(black, 0.66) 0 calculateRem(30px) calculateRem(60px) 0,
+	// inset #333 0 0 0 calculateRem(5px),
+	// inset rgba(white, 0.5) 0 0 0 calculateRem(6px);
 	transition: 1s $returnEasing;
 
 	p {
@@ -183,13 +179,13 @@ main{
 	position: absolute;
 	bottom: 0;
 	color: #fff;
-	transform: translateY(40%);
-	transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+	// transform: translateY(40%);
+	// transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 
 	p {
-		opacity: 0;
-		text-shadow: rgba(black, 1) 0 calculateRem(2px) calculateRem(3px);
-		transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+		// opacity: 0;
+		// text-shadow: rgba(black, 1) 0 calculateRem(2px) calculateRem(3px);
+		// transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 	* {
 		position: relative;
