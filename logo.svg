@@ -1,0 +1,56 @@
+<svg class="logo-header" xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+				<defs xmlns="http://www.w3.org/2000/svg">
+					<filter id="c" x="-15%" y="-15%" width="130%" height="130%">
+						<feGaussianBlur stdDeviation="1 1" result="glow"/>
+						<feMerge>
+							<feMergeNode in="glow"/>
+							<feMergeNode in="glow"/>
+							<feMergeNode in="glow"/>
+							<feMergeNode in="glow"/>
+						</feMerge>
+					</filter>
+					<filter id="a" y="0%" width="140%" height="140%">
+						<feGaussianBlur stdDeviation="8 2"/>
+					</filter>
+					<radialGradient id="b" spreadMethod="reflect">
+						<stop offset="0%" stop-color="#f54c42"/>
+						<stop offset="10%" stop-color="#e55524"/>
+						<stop offset="90%" stop-color="red"/>
+						<stop offset="100%" stop-color="#e55524"/>
+					</radialGradient>
+				</defs>
+				<g stroke="red" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="transparent">
+					<rect class="top-bar" x="301.375" y="39%" height="8" width="597.25" filter="url(#a)"/>
+					<text letter-spacing="-3" kerning="-2" x="50%" y="50%" text-anchor="middle" filter="url(#a)">
+						<tspan class="larger" dominant-baseline="central">s</tspan><tspan dominant-baseline="central">trange</tspan><tspan class="larger" dominant-baseline="central">r</tspan>
+					</text>
+					<rect class="bottom-bar bottom-bar-1" x="301.375" y="62%" height="8" width="114.086" filter="url(#a)"/>
+					<text letter-spacing="-3" kerning="-2" x="50%" y="50%" text-anchor="middle" dy=".9em" filter="url(#a)">
+						<tspan dominant-baseline="central">cards</tspan>
+					</text>
+					<rect class="bottom-bar bottom-bar-2" x="784.539" y="62%" height="8" width="114.086" filter="url(#a)"/>
+				</g>
+				<g stroke="url('#b')" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="transparent">
+					<rect class="top-bar" x="301.375" y="39%" height="8" width="597.25" filter="url(#c)"/>
+					<text letter-spacing="-3" kerning="-2" x="50%" y="50%" text-anchor="middle" filter="url(#c)">
+						<tspan class="larger" dominant-baseline="central">s</tspan><tspan dominant-baseline="central">trange</tspan><tspan class="larger" dominant-baseline="central">r</tspan>
+					</text>
+					<rect class="bottom-bar bottom-bar-1" x="301.375" y="62%" height="8" width="114.086" filter="url(#c)"/>
+					<text letter-spacing="-3" kerning="-2" x="50%" y="50%" text-anchor="middle" dy=".9em" filter="url(#c)">
+						<tspan dominant-baseline="central">cards</tspan>
+					</text>
+					<rect class="bottom-bar bottom-bar-2" x="784.539" y="62%" height="8" width="114.086" filter="url(#c)"/>
+				</g>
+				<g stroke="url('#b')" stroke-linecap="round" stroke-linejoin="round" fill="transparent">
+					<rect class="top-bar" x="301.375" y="39%" height="8" width="597.25"/>
+					<text x="50%" y="50%" class=" -2" stroke-width="2" letter-spacing="-3" kerning="-2" text-anchor="middle">
+						<tspan class="larger" dominant-baseline="central">s</tspan><tspan dominant-baseline="central">trange</tspan><tspan class="larger" dominant-baseline="central">r</tspan>
+					</text>
+					<rect class="bottom-bar bottom-bar-1" x="301.375" y="62%" height="8" width="114.086"/>
+					<text x="50%" y="50%" class="js-target-bottom js-target-bottom-2" stroke-width="2" letter-spacing="-3" kerning="-2" text-anchor="middle" dy=".9em">
+						<tspan dominant-baseline="central">cards</tspan>
+					</text>
+					<rect class="bottom-bar bottom-bar-2" x="784.539" y="62%" height="8" width="114.086"/>
+				</g>
+				<image class="hidden js-svg-image" style="position:absolute;top:0;left:0;right:0;bottom:0;height:100%;width:100%" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./images/svg-noise.png" width="1200" height="630" opacity=".2"/>
+			</svg>
