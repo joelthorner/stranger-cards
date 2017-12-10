@@ -1,105 +1,70 @@
-Vue.component('card', {
-	template: `
-		<div class="card-wrap" @mousemove="handleMouseMove" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" ref="card">
-			<div class="card" :style="cardStyle">
-				<div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
-				<div class="card-info">
-					<slot name="header"></slot>
-					<slot name="content"></slot>
-				</div>
-			</div>
-		</div>`,
-	
-	mounted() {
-		this.width = this.$refs.card.offsetWidth;
-		this.height = this.$refs.card.offsetHeight;
-	},
-
-	props: ['dataImage'],
-	
-	data: () => ({
-		width: 0,
-		height: 0,
-		mouseX: 0,
-		mouseY: 0,
-		mouseLeaveDelay: null
-	}),
-
-	computed: {
-		mousePX() {
-			return this.mouseX / this.width;
-		},
-		mousePY() {
-			return this.mouseY / this.height;
-		},
-		cardStyle() {
-			const rX = this.mousePX * 30;
-			const rY = this.mousePY * -30;
-			return {
-				transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
-			};
-		},
-		cardBgTransform() {
-			const tX = this.mousePX * -40;
-			const tY = this.mousePY * -40;
-			return {
-				transform: `translateX(${tX}px) translateY(${tY}px)`
-			}
-		},
-		cardBgImage() {
-			return {
-				backgroundImage: `url(${this.dataImage})`
-			}
-		}
-	},
-	
-	methods: {
-		handleMouseMove(e) {
-			this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width/2;
-			this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height/2;
-		},
-		handleMouseEnter() {
-			clearTimeout(this.mouseLeaveDelay);
-		},
-		handleMouseLeave() {
-			this.mouseLeaveDelay = setTimeout(()=>{
-				this.mouseX = 0;
-				this.mouseY = 0;
-			}, 500);
-		}
-	}
-});
-
 StrangerCards.main = {
 	init : function () {
 		StrangerCards.cards.init();
-
-		const app = new Vue({
-			el: '#card-container'
-		});
 	}
 };
 
 StrangerCards.cards = {
 	template : 
-		`<card data-image="%image%">
-			<div class="h1" slot="header">%name%</div>
-			<p slot="content">%text%</p>
-		</card>`,
+		`<figure class="card" id="card-%index%">
+			<div class="inset">
+				<span class="number"><i>%index%</i></span>
+				<div class="bg">
+					<img src="%image%" class="tilt-effect">
+				</div>
+				<div class="caption">
+					<b class="title">%name%</b>
+					<span class="text">%text%</span>
+				</div>
+			</div>
+		</figure>`,
 
 	init : function () {
+
+		this.insertCards();
+		this.effectBg();
+		this.reverse();
+	},
+
+	insertCards : function() {
 		$.each(StrangerCards.data, function(cardIndex, cardVal) {
 			var template = StrangerCards.cards.template;
 
+			template = template.replaceAll('%index%', cardIndex);
+			
 			$.each(cardVal, function(dataIndex, dataVal) {
-				template = template.replace('%' + dataIndex + '%', dataVal)
+				template = template.replaceAll('%' + dataIndex + '%', dataVal)
 			});
 
 			var $template = $(template);
 
 			$('#card-container').append($template);
 		});
+	},
 
+	effectBg : function() {
+		$('.card').each(function(index, el) {
+			var thisId = '#' + $(this).attr('id');
+
+			new TiltFx($(this).find('.bg img')[0], { 
+				opacity : 0.8, 
+				bgfixed : false, 
+				extraImgs : 3, 
+				movement: { 
+					perspective : 750, 
+					translateX : 38, 
+					translateY : 15, 
+					translateZ : 0, 
+					rotateY : 10 
+				},
+				element : {
+					mouseMoveWatcher : thisId
+				}
+			});
+		});
+	},
+
+	reverse : function() {
 		
 	}
 };
