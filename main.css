@@ -9,18 +9,14 @@ body {
 
 header {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
-  -webkit-align-items: flex-start;
   -ms-flex-align: start;
   align-items: flex-start;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 0.9375rem;
@@ -40,7 +36,6 @@ header .item {
   header .item {
     width: 100%;
     -webkit-box-ordinal-group: 2;
-    -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
   }
@@ -68,7 +63,6 @@ header .item-a {
   header .item-a {
     width: 50%;
     -webkit-box-ordinal-group: 3;
-    -webkit-order: 2;
     -ms-flex-order: 2;
     order: 2;
   }
@@ -109,7 +103,6 @@ main {
   grid-auto-columns: 18.75rem;
   grid-gap: 0.9375rem;
   -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   padding: 0.9375rem;
@@ -212,6 +205,9 @@ main {
 }
 
 .card .bg .tilt__back, .card .bg .tilt__front {
+  -webkit-transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -o-transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   width: 100%;
   height: 100%;
   background-position: 50% 50%;
@@ -219,6 +215,12 @@ main {
   background-size: cover;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+.card:hover .bg .tilt__back, .card:hover .bg .tilt__front {
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 
 .card .inset {
