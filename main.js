@@ -1,6 +1,41 @@
+const DEBUG = false;
+
 StrangerCards.main = {
 	init : function () {
+		StrangerCards.layout.init();
+		StrangerCards.storageUser.init();
 		StrangerCards.cards.init();
+	}
+};
+
+StrangerCards.storageUser = {
+	init : function() {
+		
+		if (!localStorage.getItem('userCards')) {
+			localStorage.setItem('userCards', '')
+		}
+	}
+};
+
+StrangerCards.layout = {
+	init : function() {
+		this.headerLinksEffect();
+		this.openCardPackEvent();
+	},
+
+	headerLinksEffect : function() {
+		$('header .item-a a').each(function(index, el) {
+			$(this).after( 
+				$(this).clone().addClass('effect-duplicate') 
+			)
+		});
+	},
+
+	openCardPackEvent : function() {
+		$('#open-card-pack').click(function(event) {
+			event.preventDefault();
+			StrangerCards.cards.openDeck();
+		});
 	}
 };
 
@@ -19,15 +54,25 @@ StrangerCards.cards = {
 			</div>
 		</figure>`,
 
-	init : function () {
+	compiledCards : null,
 
-		this.insertCards();
-		this.effectBg();
+	init : function () {
+		this.compileCards(localStorage.getItem('userCards'));
 		this.reverse();
 	},
 
-	insertCards : function() {
-		$.each(StrangerCards.data, function(cardIndex, cardVal) {
+	compileCards : function(listCompileCardsIds) {
+		var toCompile = {};
+
+		if (listCompileCardsIds){
+			$.each(listCompileCardsIds.split(','), function(index, cardId) {
+				toCompile[cardId] = StrangerCards.data[cardId];
+			});
+		}else if(DEBUG){
+			toCompile = StrangerCards.data;
+		}
+
+		$.each(toCompile, function(cardIndex, cardVal) {
 			var template = StrangerCards.cards.template;
 
 			template = template.replaceAll('%index%', cardIndex);
@@ -40,6 +85,8 @@ StrangerCards.cards = {
 
 			$('#card-container').append($template);
 		});
+		
+		this.effectBg();
 	},
 
 	effectBg : function() {
@@ -47,9 +94,9 @@ StrangerCards.cards = {
 			var thisId = '#' + $(this).attr('id');
 
 			new TiltFx($(this).find('.bg img')[0], { 
-				opacity : 0.8, 
+				opacity : 0.75, 
 				bgfixed : false, 
-				extraImgs : 3, 
+				extraImgs : 5, 
 				movement: { 
 					perspective : 750, 
 					translateX : 38, 
@@ -62,6 +109,39 @@ StrangerCards.cards = {
 				}
 			});
 		});
+	},
+
+
+	openDeck : function() {
+		var arrAllCardsIds = [];
+		$.each(StrangerCards.data, function(index, el) {
+			arrAllCardsIds.push(index);
+		});
+		
+		var arrUserCardsIds = (localStorage.getItem('userCards') == '' ? [] : localStorage.getItem('userCards').split(','));
+
+		if (arrUserCardsIds.length == arrAllCardsIds.length) {
+			alert('have totes les cards')
+		
+		}else{
+			var newCardPack = "";
+
+			for (var i = 0; i < 5; i++) {
+				
+				var rand = Math.getRandomInt(0, arrAllCardsIds.length - 1);
+				newCardPack = newCardPack + (newCardPack.length ? ',' : '') + arrAllCardsIds[rand];
+			}
+
+			// alert('newCardPack: ' + newCardPack);
+			// animation opening decks
+			
+			var arrSaveCardsIds = $.uniqueSort($.merge(arrUserCardsIds, newCardPack.split(','))).join(',');
+			
+			// sto and render cards:
+			this.compileCards(arrSaveCardsIds);
+
+			localStorage.setItem('userCards',  arrSaveCardsIds);
+		}
 	},
 
 	reverse : function() {

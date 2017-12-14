@@ -19,7 +19,7 @@ header {
   justify-content: space-between;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 0.9375rem;
+  padding: 0.9375rem 0;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -61,7 +61,7 @@ header .item-a {
 
 @media (max-width: 599px) {
   header .item-a {
-    width: 50%;
+    width: auto;
     -webkit-box-ordinal-group: 3;
     -ms-flex-order: 2;
     order: 2;
@@ -70,31 +70,44 @@ header .item-a {
 
 header .item-a a {
   color: rgba(255, 255, 255, 0.85);
-  display: block;
+  display: table;
   font-weight: 700;
   text-transform: uppercase;
   padding: 0.625rem 1.25rem;
   letter-spacing: .025em;
-  text-transform: uppercase;
-  -webkit-filter: blur(1px);
-  filter: blur(1px);
-  will-change: filter;
+  line-height: 1;
+  -webkit-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  -o-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+header .item-a a:not(.effect-duplicate) {
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+header .item-a a:not(.effect-duplicate):hover {
+  opacity: 1;
+}
+
+header .item-a a:not(.effect-duplicate):hover + a {
+  opacity: 0;
+}
+
+header .item-a a.effect-duplicate {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  -o-transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  line-height: 1;
+  will-change: filter;
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 
-header .item-a a:hover {
-  -webkit-filter: blur(0);
-  filter: blur(0);
-  color: #FFF;
-}
-
-header .item-a:last-child {
-  text-align: right;
+header .item-a:last-child a {
+  margin-left: auto;
 }
 
 main {
@@ -118,6 +131,7 @@ main {
   background-size: auto 100%;
   background-repeat: repeat-x;
   background-position: left center;
+  margin: 0;
   -webkit-transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
   -o-transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
   transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -150,6 +164,7 @@ main {
 
 .card .number i {
   display: block;
+  letter-spacing: -1px;
   margin-left: -0.125rem;
   font-size: 1.0625rem;
 }
@@ -205,9 +220,9 @@ main {
 }
 
 .card .bg .tilt__back, .card .bg .tilt__front {
-  -webkit-transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -o-transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -webkit-transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -o-transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   width: 100%;
   height: 100%;
   background-position: 50% 50%;

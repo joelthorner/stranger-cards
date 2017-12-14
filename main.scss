@@ -30,7 +30,7 @@ header{
 	align-items: flex-start;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	padding: calculateRem(15px);
+	padding: calculateRem(15px) 0;
 	position: fixed;
 	z-index: 100;
 	left: 0;
@@ -60,30 +60,43 @@ header{
 	.item-a {
 		width: #{100%/3};
 		@media(max-width: $mediaBreak){
-			width: 50%;
+			width: auto;
 			order: 2;
 		}
 		a{
 			color: rgba(255,255,255,.85);
-			display: block;
+			display: table;
+
 			font-weight: 700;
 			text-transform: uppercase;
 			padding: calculateRem(10px) calculateRem(20px);
 			letter-spacing: .025em;
-			text-transform: uppercase;
-			filter: blur(1px);
-			will-change: filter;
-			backface-visibility: hidden; 
-			transition: all .6s cubic-bezier(.19,1,.22,1);
 			line-height: 1;
+				transition: all .6s $hoverEasing;
 
-			&:hover{
-				filter: blur(0);
-				color: #FFF;
+			&:not(.effect-duplicate){
+				opacity: 0;
+				position: relative;
+				z-index: 1;
+				
+				&:hover{
+					opacity: 1;
+				}
+				&:hover + a{
+					opacity: 0;
+				}
 			}
+
+			&.effect-duplicate{
+				backface-visibility: hidden; 
+				will-change: filter;
+				filter: blur(1px);
+				transform: translateY(-100%);
+			}
+
 		}
-		&:last-child{
-			text-align: right;
+		&:last-child a{
+			margin-left: auto;
 		}
 	}
 }
@@ -107,20 +120,16 @@ main{
 	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: left center;
-	// box-shadow: 0 0 16px rgba(0, 198, 255, 0), 0 0 32px rgba(0, 102, 255, 0);
+	margin: 0;
 	transition: all 350ms $hoverEasing;
 	&:hover{
 		transition: all 350ms $returnEasing;
-		// box-shadow: 0 0 16px rgba(0, 198, 255, 0.65), 0 0 32px rgba(0, 102, 255, 0.3);
 		animation: bgAnimate 75000s infinite;
 	}
 	
 	.number{
 		height: calculateRem(38px);
 		width: calculateRem(38px);
-		// display: flex;
-		// align-items: center;
-		// justify-content: center;
 		position: absolute;
 		z-index: 1;
 		right: calculateRem(-5px);
@@ -136,6 +145,7 @@ main{
 
 		i{
 			display: block;
+			letter-spacing: -1px;
 			margin-left: calculateRem(-2px);
 			font-size: calculateRem(17px);
 		}
@@ -173,8 +183,6 @@ main{
 			width: 120%;
 			height: 120%;
 			position: absolute;
-			// left: 0;
-			// top: 0;
 			left: -10%;
 			top: -10%;
 			overflow: hidden;
@@ -191,7 +199,7 @@ main{
 
 		.tilt__back, .tilt__front {
 
-			transition: all 1s $returnEasing;
+			transition: all 0.5s $returnEasing;
 			width: 100%;
 			height: 100%;
 			background-position: 50% 50%;
