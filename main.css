@@ -25,7 +25,6 @@ header {
   left: 0;
   right: 0;
   top: 0;
-  height: 8.5rem;
 }
 
 header .item {
@@ -57,6 +56,7 @@ header img {
 
 header .item-a {
   width: 33.33333%;
+  position: relative;
 }
 
 @media (max-width: 599px) {
@@ -104,10 +104,12 @@ header .item-a a.effect-duplicate {
   -webkit-transform: translateY(-100%);
   -ms-transform: translateY(-100%);
   transform: translateY(-100%);
+  position: absolute;
 }
 
 header .item-a:last-child a {
   margin-left: auto;
+  right: 0;
 }
 
 main {
@@ -115,9 +117,9 @@ main {
   grid-template-columns: repeat(auto-fill, 18.75rem);
   grid-auto-columns: 18.75rem;
   grid-gap: 0.9375rem;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding: 0.9375rem;
 }
 
@@ -127,7 +129,6 @@ main {
   border: 2px solid #FFF;
   padding-bottom: 150%;
   position: relative;
-  background-image: url(./images/bgCard.jpg);
   background-size: auto 100%;
   background-repeat: repeat-x;
   background-position: left center;
@@ -135,6 +136,30 @@ main {
   -webkit-transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
   -o-transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
   transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card.card-type-0 {
+  background-image: url(./images/bg/0.jpg);
+}
+
+.card.card-type-1 {
+  background-image: url(./images/bg/1.jpg);
+}
+
+.card.card-type-2 {
+  background-image: url(./images/bg/2.jpg);
+}
+
+.card.card-type-3 {
+  background-image: url(./images/bg/3.jpg);
+}
+
+.card.card-type-4 {
+  background-image: url(./images/bg/4.jpg);
+}
+
+.card.card-type-5 {
+  background-image: url(./images/bg/5.jpg);
 }
 
 .card:hover {
@@ -244,6 +269,10 @@ main {
   top: 1rem;
   right: 1rem;
   bottom: 1rem;
+}
+
+#animation-cards-open {
+  display: none;
 }
 
 @-webkit-keyframes bgAnimate {

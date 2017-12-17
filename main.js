@@ -19,6 +19,7 @@ StrangerCards.storageUser = {
 
 StrangerCards.layout = {
 	init : function() {
+		this.scrollMenu();
 		this.headerLinksEffect();
 		this.openCardPackEvent();
 	},
@@ -35,6 +36,24 @@ StrangerCards.layout = {
 		$('#open-card-pack').click(function(event) {
 			event.preventDefault();
 			StrangerCards.cards.openDeck();
+		});
+	},
+
+	scrollMenu : function() {
+		$(window).on('scroll', function(event) {
+			var $logo = $('#logo');
+			$logo.css('width', '');
+
+			var w = $logo.width() - $(document).scrollTop();
+			if (w <= 150) w = 150;
+			$logo.width(w);
+
+			var $header = $('header');
+			var bg = 0;
+			bg = bg + ($(document).scrollTop() / (window.innerHeight / 2) );
+			if (bg >= 0.6) bg = 0.6;
+			$header.css('background', 'rgba(0, 0, 0,' + bg + ')');
+
 		});
 	}
 };
@@ -81,7 +100,7 @@ StrangerCards.cards = {
 				template = template.replaceAll('%' + dataIndex + '%', dataVal)
 			});
 
-			var $template = $(template);
+			var $template = $(template).addClass('card-type-' + cardVal.type);
 
 			$('#card-container').append($template);
 		});

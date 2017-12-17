@@ -36,7 +36,7 @@ header{
 	left: 0;
 	right: 0;
 	top: 0;
-	height: calculateRem(136px);
+	// height: calculateRem(136px);
 
 	.item {
 		width: #{100%/3};
@@ -59,6 +59,7 @@ header{
 	
 	.item-a {
 		width: #{100%/3};
+		position: relative;
 		@media(max-width: $mediaBreak){
 			width: auto;
 			order: 2;
@@ -92,11 +93,13 @@ header{
 				will-change: filter;
 				filter: blur(1px);
 				transform: translateY(-100%);
+				position: absolute;
 			}
 
 		}
 		&:last-child a{
 			margin-left: auto;
+			right: 0;
 		}
 	}
 }
@@ -106,7 +109,7 @@ main{
 	grid-template-columns: repeat(auto-fill, calculateRem(300px));
 	grid-auto-columns: calculateRem(300px);
 	grid-gap: calculateRem(15px);
-	justify-content: space-evenly;
+	justify-content: center;
 	padding: calculateRem(15px);
 }
 
@@ -116,7 +119,11 @@ main{
 	border: 2px solid #FFF;
 	padding-bottom: 150%;
 	position: relative;
-	background-image: url(./images/bgCard.jpg);
+	@for $i from 0 through 5 {
+		&.card-type-#{$i} {
+			background-image: url(./images/bg/#{$i}.jpg);
+		}
+	}
 	background-size: auto 100%;
 	background-repeat: repeat-x;
 	background-position: left center;
@@ -226,6 +233,12 @@ main{
 	}
 
 }
+
+#animation-cards-open{
+	display: none;
+}
+
+
 @keyframes bgAnimate {
 	
 	0%{
