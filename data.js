@@ -9,7 +9,7 @@ StrangerCards.data = {
 			Chapter Two: Trick or Treat, Freak (S1)`
 	},
 	11 : {
-		name : 'Eleven',
+		name : 'Portal Eleven',
 		type : 0,
 		image : StrangerCards.dataHttp + 'images/11.jpg',
 		text : `<b>Hawkins Middle School (upside down)</b>
@@ -21,6 +21,13 @@ StrangerCards.data = {
 		image : StrangerCards.dataHttp + 'images/23.jpg',
 		text : `<b>Will's house</b>
 			Chapter Three: Holly, Jolly (S1)`
+	},
+	26 : {
+		name : 'Jim Hopper without hat',
+		type : 0,
+		image : StrangerCards.dataHttp + 'images/26.jpg',
+		text : `<b>Hawkins police department</b>
+			Chapter Four: The Body (S1)`
 	},
 	50 : {
 		name : 'The Demogorgon',

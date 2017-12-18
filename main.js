@@ -1,4 +1,5 @@
 const DEBUG = false;
+const ALLCARDS = false;
 
 StrangerCards.main = {
 	init : function () {
@@ -14,14 +15,47 @@ StrangerCards.storageUser = {
 		if (!localStorage.getItem('userCards')) {
 			localStorage.setItem('userCards', '')
 		}
+
+		if (DEBUG) {
+			this.clearAll();
+		}
+	},
+
+	clearAll : function () {
+		$('body').append($('<button/>', {
+			id : 'clear-all',
+			type : 'button',
+			html : 'CLEAR',
+			click : function() {
+				window.location = window.location;
+				localStorage.setItem('userCards', '');
+			}
+		}))
 	}
 };
 
 StrangerCards.layout = {
 	init : function() {
+		this.alertSpoiler();
+		this.bodyPadding();
 		this.scrollMenu();
 		this.headerLinksEffect();
 		this.openCardPackEvent();
+	},
+
+	alertSpoiler : function() {
+		var $modal = $('#disclaimer-spoiler');
+
+		$('.md-overlay, .md-close').click(function(event) {
+			$modal.removeClass('md-show')
+		});
+	},
+
+	bodyPadding : function() {
+		$('body').css('padding-top', $('header').outerHeight(true));
+		$(window).on('resize', function(event) {
+			$('body').css('padding-top', $('header').outerHeight(true));
+		});
 	},
 
 	headerLinksEffect : function() {
@@ -40,18 +74,18 @@ StrangerCards.layout = {
 	},
 
 	scrollMenu : function() {
-		$(window).on('scroll', function(event) {
+		$(window).on('scroll resize', function(event) {
 			var $logo = $('#logo');
 			$logo.css('width', '');
 
 			var w = $logo.width() - $(document).scrollTop();
-			if (w <= 150) w = 150;
-			$logo.width(w);
+			if (w <= ($logo.width() / 2)) w = ($logo.width() / 2);
+			if(window.innerWidth >= 600) $logo.width(w);
 
 			var $header = $('header');
 			var bg = 0;
 			bg = bg + ($(document).scrollTop() / (window.innerHeight / 2) );
-			if (bg >= 0.6) bg = 0.6;
+			if (bg >= 0.75) bg = 0.75;
 			$header.css('background', 'rgba(0, 0, 0,' + bg + ')');
 
 		});
@@ -84,10 +118,13 @@ StrangerCards.cards = {
 		var toCompile = {};
 
 		if (listCompileCardsIds){
+			
 			$.each(listCompileCardsIds.split(','), function(index, cardId) {
-				toCompile[cardId] = StrangerCards.data[cardId];
+				if(!$('#card-' + cardId).length) 
+					toCompile[cardId] = StrangerCards.data[cardId];
 			});
-		}else if(DEBUG){
+
+		}else if(ALLCARDS){
 			toCompile = StrangerCards.data;
 		}
 
@@ -130,8 +167,12 @@ StrangerCards.cards = {
 		});
 	},
 
+	completeCollection : function() {
+		alert('have totes les cards')
+	},
 
 	openDeck : function() {
+		
 		var arrAllCardsIds = [];
 		$.each(StrangerCards.data, function(index, el) {
 			arrAllCardsIds.push(index);
@@ -140,7 +181,8 @@ StrangerCards.cards = {
 		var arrUserCardsIds = (localStorage.getItem('userCards') == '' ? [] : localStorage.getItem('userCards').split(','));
 
 		if (arrUserCardsIds.length == arrAllCardsIds.length) {
-			alert('have totes les cards')
+			
+			this.completeCollection();
 		
 		}else{
 			var newCardPack = "";
@@ -154,12 +196,15 @@ StrangerCards.cards = {
 			// alert('newCardPack: ' + newCardPack);
 			// animation opening decks
 			
-			var arrSaveCardsIds = $.uniqueSort($.merge(arrUserCardsIds, newCardPack.split(','))).join(',');
+			var arrSaveCardsIds = $.uniqueSort($.merge(arrUserCardsIds, newCardPack.split(',')));
+			var listSaveCardsIds = arrSaveCardsIds.join(',');
 			
 			// sto and render cards:
-			this.compileCards(arrSaveCardsIds);
+			this.compileCards(listSaveCardsIds);
 
-			localStorage.setItem('userCards',  arrSaveCardsIds);
+			localStorage.setItem('userCards', listSaveCardsIds);
+
+			if (arrSaveCardsIds.length == arrAllCardsIds.length) this.completeCollection();
 		}
 	},
 
