@@ -19,12 +19,17 @@ $mediaBreak: 599px;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Rubik:700,900i');
 
+@media (max-width: $mediaBreak) and (orientation: portrait){
+	html{
+		font-size: 0.5rem;
+	}
+}
 
 body{
 	background-color: #000;
 	font-family: "Open Sans";
 	color: #FFF;
-	// padding-top: calculateRem(136px);
+	padding-bottom: calculateRem(60px);
 }
 
 #clear-all {
@@ -208,7 +213,7 @@ main{
 		height: 0;
 		position: relative;
 		border-radius: calculateRem(8px);
-		border: 1px solid #000;
+		// border: 1px solid #000;
 		
 		.tilt {
 			width: 120%;
@@ -306,14 +311,17 @@ main{
 
 	.md-content {
 		color: #fff;
-		background: #e74c3c;
+		background: #000;
 		position: relative;
 		border-radius: 3px;
 		margin: 0 auto;
+		padding: calculateRem(20px);
+		box-shadow: 1px;
 		transform-style: preserve-3d;
 		transform: rotateX(-70deg);
 		transition: all 0.3s;
 		opacity: 0;
+		text-align: center;
 	}
 
 	&.md-show {
@@ -342,4 +350,47 @@ main{
 	opacity: 0;
 	background-color: #000;
 	transition: all 0.3s;
+}
+
+video{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -1;
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.btn{
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+	color: #ce0000;
+	background-color: transparent;
+	background-image: none;
+	border-color: #ce0000;
+
+	&:focus{    
+		outline: 0;
+		box-shadow: 0 0 0 0.2rem rgba(220,53,69,.5);
+	}
+	&:hover {
+		color: #fff;
+		background-color: #ce0000;
+		border-color: #ce0000;
+	}
 }

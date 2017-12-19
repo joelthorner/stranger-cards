@@ -3,8 +3,8 @@ const ALLCARDS = false;
 
 StrangerCards.main = {
 	init : function () {
-		StrangerCards.layout.init();
 		StrangerCards.storageUser.init();
+		StrangerCards.layout.init();
 		StrangerCards.cards.init();
 	}
 };
@@ -12,12 +12,18 @@ StrangerCards.main = {
 StrangerCards.storageUser = {
 	init : function() {
 		
-		if (!localStorage.getItem('userCards')) {
-			localStorage.setItem('userCards', '')
-		}
+		this.initStorage('userCards', '');
+		this.initStorage('spoilerDisclaimer', true);
 
 		if (DEBUG) {
 			this.clearAll();
+		}
+	},
+
+	initStorage : function(key, initVal) {
+		
+		if (localStorage.getItem(key) == null) {
+			localStorage.setItem(key, initVal)
 		}
 	},
 
@@ -29,6 +35,7 @@ StrangerCards.storageUser = {
 			click : function() {
 				window.location = window.location;
 				localStorage.setItem('userCards', '');
+				localStorage.setItem('spoilerDisclaimer', true);
 			}
 		}))
 	}
@@ -36,18 +43,28 @@ StrangerCards.storageUser = {
 
 StrangerCards.layout = {
 	init : function() {
+		// instant view
 		this.alertSpoiler();
 		this.bodyPadding();
-		this.scrollMenu();
 		this.headerLinksEffect();
+		
+		// deferred view
+		this.scrollMenu();
 		this.openCardPackEvent();
 	},
 
 	alertSpoiler : function() {
 		var $modal = $('#disclaimer-spoiler');
+		if (localStorage.getItem('spoilerDisclaimer') == 'true') {
+			$('body').addClass('md-show-body');
+			$modal.addClass('md-show');
+		}
+
 
 		$('.md-overlay, .md-close').click(function(event) {
-			$modal.removeClass('md-show')
+			$modal.removeClass('md-show');
+
+			localStorage.setItem('spoilerDisclaimer', false);
 		});
 	},
 
@@ -83,10 +100,15 @@ StrangerCards.layout = {
 			if(window.innerWidth >= 600) $logo.width(w);
 
 			var $header = $('header');
+
 			var bg = 0;
-			bg = bg + ($(document).scrollTop() / (window.innerHeight / 2) );
-			if (bg >= 0.75) bg = 0.75;
-			$header.css('background', 'rgba(0, 0, 0,' + bg + ')');
+			var div = window.innerHeight > window.innerWidth ? 2 : 4;
+			bg = bg + ($(document).scrollTop() / (window.innerHeight / div) );
+			if (bg >= 0.5) bg = 0.5;
+
+			$header.css({
+				'background' : 'rgba(3, 8, 21,' + bg + ')'
+			});
 
 		});
 	}
@@ -152,11 +174,11 @@ StrangerCards.cards = {
 			new TiltFx($(this).find('.bg img')[0], { 
 				opacity : 0.75, 
 				bgfixed : false, 
-				extraImgs : 5, 
+				extraImgs : 6, 
 				movement: { 
 					perspective : 750, 
-					translateX : 38, 
-					translateY : 15, 
+					translateX : 40, 
+					translateY : 30, 
 					translateZ : 0, 
 					rotateY : 10 
 				},

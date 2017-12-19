@@ -29,6 +29,20 @@ StrangerCards.data = {
 		text : `<b>Hawkins police department</b>
 			Chapter Four: The Body (S1)`
 	},
+	32 : {
+		name : 'Flying fucking var',
+		type : 0,
+		image : StrangerCards.dataHttp + 'images/32_2.jpg',
+		text : `<b>Hawkins street</b>
+			Chapter Seven: The Bathtub (S1)`
+	},
+	42 : {
+		name : 'Quarry friends',
+		type : 0,
+		image : StrangerCards.dataHttp + 'images/42.jpg',
+		text : `<b>Hawkins quarry</b>
+			Chapter Six: The Monster (S1)`
+	},
 	50 : {
 		name : 'The Demogorgon',
 		type : 0,

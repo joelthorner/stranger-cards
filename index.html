@@ -6,6 +6,17 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+		<meta name="theme-color" content="#081321">
+
+		<link rel="icon" sizes="192x192" href="./images/icons/icon192x192.png">
+		<link rel="apple-touch-icon" href="./images/icons/icon192x192.png">
+		<meta name="msapplication-square310x310logo" content="./images/icons/icon310x310.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="./images/icons/icon76x76.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="./images/icons/icon120x120.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="./images/icons/icon152x152.png">
+		<meta name="msapplication-square70x70logo" content="./images/icons/icon70x70.png">
+		<meta name="msapplication-square150x150logo" content="./images/icons/icon150x150.png">
+
 		<link rel="stylesheet" href="bootstrap-reboot.min.css">
 		<link rel="stylesheet" href="main.css">
 	</head>
@@ -47,26 +58,21 @@
 
 		<div class="md-modal" id="disclaimer-spoiler">
 			<div class="md-content">
-				<h3>Modal Dialog</h3>
+				<h3>Spoiler alert!</h3>
 				<div>
-					<p>This is a modal window. You can do the following things with it:</p>
-					<ul>
-						<li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-						<li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
-						<li><strong>Close:</strong> click on the button below to close the modal.</li>
-					</ul>
-					<button class="md-close">Close me!</button>
+					<p>This page may contain spoilers from Stranger Things</p>
+					<button class="md-close btn" type="button">Close me!</button>
 				</div>
 			</div>
 		</div>
 
 		<div class="md-overlay"></div>
 
-		<svg width="0" height="0" style="position:absolute"><filter id="blur3px"><feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur></filter></svg>
-
+		<video preload="auto" autoplay="" poster="./images/bg.jpg" loop="" muted="">
+			<source src="bg.mp4" type="video/mp4">
+		</video>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script> -->
 		<script src="tiltfx.js"></script>
 		<script src="core.js"></script>
 		<script src="data.js"></script>
