@@ -30,7 +30,7 @@ StrangerCards.data = {
 			Chapter Four: The Body (S1)`
 	},
 	32 : {
-		name : 'Flying fucking var',
+		name : 'Flying fucking van',
 		type : 0,
 		image : StrangerCards.dataHttp + 'images/32_2.jpg',
 		text : `<b>Hawkins street</b>

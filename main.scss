@@ -19,11 +19,11 @@ $mediaBreak: 599px;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Rubik:700,900i');
 
-@media (max-width: $mediaBreak) and (orientation: portrait){
-	html{
-		font-size: 0.5rem;
-	}
-}
+// @media (max-width: $mediaBreak) and (orientation: portrait){
+// 	html{
+// 		font-size: 0.5rem;
+// 	}
+// }
 
 body{
 	background-color: #000;
