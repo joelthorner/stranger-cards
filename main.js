@@ -12,8 +12,8 @@ StrangerCards.main = {
 StrangerCards.storageUser = {
 	init : function() {
 		
-		this.initStorage('userCards', '');
-		this.initStorage('spoilerDisclaimer', true);
+		this.initStorage('ST_userCards', '');
+		this.initStorage('ST_spoilerDisclaimer', true);
 
 		if (DEBUG) {
 			this.clearAll();
@@ -34,8 +34,8 @@ StrangerCards.storageUser = {
 			html : 'CLEAR',
 			click : function() {
 				window.location = window.location;
-				localStorage.setItem('userCards', '');
-				localStorage.setItem('spoilerDisclaimer', true);
+				localStorage.setItem('ST_userCards', '');
+				localStorage.setItem('ST_spoilerDisclaimer', true);
 			}
 		}))
 	}
@@ -55,7 +55,7 @@ StrangerCards.layout = {
 
 	alertSpoiler : function() {
 		var $modal = $('#disclaimer-spoiler');
-		if (localStorage.getItem('spoilerDisclaimer') == 'true') {
+		if (localStorage.getItem('ST_spoilerDisclaimer') == 'true') {
 			$('body').addClass('md-show-body');
 			$modal.addClass('md-show');
 		}
@@ -64,7 +64,7 @@ StrangerCards.layout = {
 		$('.md-overlay, .md-close').click(function(event) {
 			$modal.removeClass('md-show');
 
-			localStorage.setItem('spoilerDisclaimer', false);
+			localStorage.setItem('ST_spoilerDisclaimer', false);
 		});
 	},
 
@@ -132,7 +132,7 @@ StrangerCards.cards = {
 	compiledCards : null,
 
 	init : function () {
-		this.compileCards(localStorage.getItem('userCards'));
+		this.compileCards(localStorage.getItem('ST_userCards'));
 		this.reverse();
 	},
 
@@ -200,7 +200,7 @@ StrangerCards.cards = {
 			arrAllCardsIds.push(index);
 		});
 		
-		var arrUserCardsIds = (localStorage.getItem('userCards') == '' ? [] : localStorage.getItem('userCards').split(','));
+		var arrUserCardsIds = (localStorage.getItem('ST_userCards') == '' ? [] : localStorage.getItem('ST_userCards').split(','));
 
 		if (arrUserCardsIds.length == arrAllCardsIds.length) {
 			
@@ -224,7 +224,7 @@ StrangerCards.cards = {
 			// sto and render cards:
 			this.compileCards(listSaveCardsIds);
 
-			localStorage.setItem('userCards', listSaveCardsIds);
+			localStorage.setItem('ST_userCards', listSaveCardsIds);
 
 			if (arrSaveCardsIds.length == arrAllCardsIds.length) this.completeCollection();
 		}
