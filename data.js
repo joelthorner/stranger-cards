@@ -46,7 +46,7 @@ StrangerCards.data = {
 	50 : {
 		name : 'The Demogorgon',
 		type : 0,
-		image : StrangerCards.dataHttp + 'images/50.jpg',
+		image : StrangerCards.dataHttp + 'images/50_2.jpg',
 		text : `<b>Hawkins Middle School</b>
 			Chapter Eight: The Upside Down (S1)`
 	},

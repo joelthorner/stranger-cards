@@ -1,0 +1,26 @@
+{
+	"short_name": "Stranger Cards",
+	"name": "Stranger Cards by joelthorner",
+	"icons": [{
+		"src": "images/icons/icon128x128.png",
+		"type": "image/png",
+		"sizes": "128x128"
+	}, {
+		"src": "images/icons/icon152x152.png",
+		"type": "image/png",
+		"sizes": "152x152"
+	}, {
+		"src": "images/icons/icon144x144.png",
+		"type": "image/png",
+		"sizes": "144x144"
+	}, {
+		"src": "images/icons/icon192x192.png",
+		"type": "image/png",
+		"sizes": "192x192"
+	}],
+	"start_url": "https://github.com/joelthorner/stranger-cards/",
+	"background_color": "#081321",
+	"theme_color": "#081321",
+	"orientation": "portrait",
+	"display": "standalone"
+}
