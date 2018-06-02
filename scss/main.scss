@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Rubik:700');
+
+@import 'utils';
+@import 'variables';
+@import 'animations';
+@import 'reset';
+
+html, body{
+	height: 100%;
+	position: relative;
+	font-family: "Open Sans";
+	color: #FFF;
+}
+
+body{
+	font-size: .8rem;
+}
+
+.bg-color{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	// background-color: rgba($blue-bg, .5);
+	background-color: rgba(16, 2, 41, 0.7);
+}
+
+.video-bg{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -2;
+	transform: translate(-50%, -50%);
+}
+
+header{
+	width: $header-width;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(#000, 0.35);
+	z-index: 10;
+	padding: rem(20px) rem(15px);
+}
+
+.logo{
+	// width: 90%;
+	display: block;
+	margin: 0 auto;
+
+	img{
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+}
+
+main{
+	position: relative;
+	margin-left: $header-width;
+	width: calc(100% - $header-width);
+	height: 100%;
+}
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, $card-width);
+	grid-auto-columns: $card-width;
+	grid-gap: rem(20px);
+	justify-content: center;
+	padding: rem(20px);
+}
+
+.card{
+	border-radius: rem(12px);
+	border: rem(3px) solid $color-wine;
+	padding-bottom: 145%;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+	margin: 0;
+
+	.inset{
+		background-image: url(../img/card-bg.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	&.card-empty{
+		// opacity: 0.4;
+		border-color: #451346;
+		.inset{
+			z-index: 1;
+		}
+		.logo{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			width: rem(200px);
+			height: rem(71px);
+			z-index: 2;
+			background-image: url(../img/logo-small.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+	}
+	&.card-ok{
+		
+		.bg{
+			overflow: hidden;
+			position: relative;
+			border-radius: rem(6px);
+			height: 100%;
+			border: 1px solid rgba(0, 0, 0, 0.25);
+			.bg-img{
+				position: absolute;
+				top: calc(-1 * 5px);
+				left: calc(-1 * 10px);
+				width: calc(100% + 10px * 2);
+				height: calc(100% + 5px * 2);
+				background-repeat: no-repeat;
+				background-position: 50% 0;
+				background-color: transparent;
+				background-size: cover;
+			}
+		}
+		.inset{
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			padding: rem(15px);
+		}
+	}
+	.number{
+		height: rem(33px);
+		width: rem(33px);
+		position: absolute;
+		z-index: 1;
+		right: rem(10px);
+		top: rem(10px);
+		background-color: #000;
+		border-radius: 50%;
+		line-height: 1;
+		border: 2px solid #00c6ff;
+		font-family: "Rubik";
+		font-weight: bold;
+		padding: rem(8px) 0;
+		text-align: center;
+
+		i{
+			display: block;
+			font-style: normal;
+			letter-spacing: -1px;
+			margin-left: rem(-2px);
+			font-size: rem(13px);
+		}
+	}
+	.title{
+		font-family: "Rubik";
+		font-weight: bold;
+		font-size: rem(20px);
+		line-height: 1;
+		display: block;
+		margin-top: rem(15px);
+		margin-bottom: rem(12px);
+		color: $yellow;
+	}
+	.location{
+		font-size: rem(12px);
+		display: block;
+		font-weight: bold;
+	}
+	.episode{
+		font-size: rem(10px);
+		margin-bottom: rem(5px);
+		display: block;
+	}
+	// glitch
+	&.card-type-1{
+		.title{
+			position:relative;
+			&::after{
+				content: attr(data-text);
+				position: absolute;
+				left: 1px;
+				text-shadow: -1px 0 red;
+				top: 0;
+				color: $yellow;
+				background: black;
+				overflow: hidden;
+				clip: rect(0, 900px, 0, 0); 
+				animation: noise-anim 2s infinite linear alternate-reverse;
+			}
+			&::before{
+				content: attr(data-text);
+				position: absolute;
+				left: -1px;
+				text-shadow: 1px 0 blue; 
+				top: 0;
+				color: $yellow;
+				background: black;
+				overflow: hidden;
+				clip: rect(0, 900px, 0, 0); 
+				animation: noise-anim-2 3s infinite linear alternate-reverse;
+			}
+		}
+		.bg-img{
+			background-blend-mode: none;
+			&:nth-child(2) {
+				background-color: transparent;
+				background-blend-mode: none;
+				animation-name: glitch-anim-1;
+			}
+			&:nth-child(3) {
+				background-color: transparent;
+				background-blend-mode: none;
+				animation-name: glitch-anim-2;
+			}
+			&:nth-child(4) {
+				background-color: transparent;
+				background-blend-mode: none;
+				animation-name: glitch-anim-3;
+			}
+			&:nth-child(5) {
+				background-color: #af4949;
+				background-blend-mode: overlay;
+				animation-name: glitch-anim-flash;
+			}
+			&:nth-child(n+2) {
+				animation-duration: 5s;
+				animation-delay: 0;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				opacity: 0;
+			}
+		}
+	}
+}
