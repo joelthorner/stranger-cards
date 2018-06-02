@@ -1,8 +1,24 @@
 // TYPES
 // 0 normal
 // 1 glitch
+// 2 poster
+// 3 D&D
 
 ST.cards = {
+	1 : {
+		name : 'Poster one',
+		type : 2,
+		image : 'img/1.jpg',
+		location : 'Netflix',
+		episode : 'Season 1'
+	},
+	2 : {
+		name : 'Poster two',
+		type : 2,
+		image : 'img/2.jpg',
+		location : 'Netflix',
+		episode : 'Season 1'
+	},
 	3 : {
 		name : 'Will before missing',
 		type : 0,
@@ -16,6 +32,13 @@ ST.cards = {
 		image : 'img/11.jpg',
 		location : 'Hawkins Middle School (upside down)',
 		episode : 'Chapter Two: Trick or Treat, Freak (S2)'
+	},
+	20 : {
+		name : 'Demogorgon D&D figure',
+		type : 3,
+		image : 'img/20.jpg',
+		location : 'Will\'s basement',
+		episode : 'Chapter One: The Vanishing Of Will Byers (S1)'
 	},
 	23 : {
 		name : 'Message wall',
@@ -47,7 +70,7 @@ ST.cards = {
 	},
 	50 : {
 		name : 'The Demogorgon',
-		type : 0,
+		type : 1,
 		image : 'img/50_2.jpg',
 		location : 'Hawkins Middle School',
 		episode : 'Chapter Eight: The Upside Down (S1)'
