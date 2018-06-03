@@ -54,17 +54,23 @@ ST.layout = {
 			
 			if (userCards[num]) {
 				var cardImage = 'img/cards/' + card.image;
+				var imgHtml = `<div class="bg-img" style="background-image: url(${cardImage})"></div>`;
+				
+				switch(card.type){
+					case 1: 
+						imgHtml = new Array(6).join(`<div class="bg-img" style="background-image: url(${cardImage})"></div>`);
+						break;
+					case 3: 
+						imgHtml = `<img class="bg-img" src="${cardImage}">`;
+						break;
+				}
+
 				$grid.append(
 					`<figure class="card card-ok card-type-${card.type}" data-num="${num}" id="card-${num}" style="-webkit-box-ordinal-group:${numIncr};-ms-flex-order:${num};order:${num}">
 						<div class="inset">
 							<span class="number"><i>${num}</i></span>
 							<div class="bg">
-								<!-- <img src="${cardImage}"> -->
-								<div class="bg-img" style="background-image: url(${cardImage})"></div>
-								<div class="bg-img" style="background-image: url(${cardImage})"></div>
-								<div class="bg-img" style="background-image: url(${cardImage})"></div>
-								<div class="bg-img" style="background-image: url(${cardImage})"></div>
-								<div class="bg-img" style="background-image: url(${cardImage})"></div>
+								${imgHtml}
 							</div>
 							<div class="caption">
 								<b class="title" data-text="${card.name}">${card.name}</b>

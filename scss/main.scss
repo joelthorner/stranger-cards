@@ -319,10 +319,59 @@ main{
 		}
 	}
 	// dead
+	$screen-background: #000;
 	&.card-type-3{
 		border: $border-card solid #9b9bb7;
 		.inset{
-			background-image: url(../img/bg/card-bg-3.jpg)
+			background-image: url(../img/bg/card-bg-3.jpg);
+			&::after{
+				content: "";
+				display: block;
+				animation: flicker 0.05s infinite;
+				position: absolute;
+				background-color: rgba(0, 0, 0, 0.5);
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 0;
+			}
+		}
+		.bg, .caption{
+			z-index: 1;
+		}
+		.bg{
+			background-color: $screen-background;
+			position: relative;
+			overflow: hidden;
+
+			&::after{
+				content: " ";
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				background: transparentize($screen-background,0.9);
+				opacity: 0;
+				z-index: 2;
+				pointer-events: none;
+				animation: flicker 0.25s infinite;
+			}
+			&::before{
+				content: " ";
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				background: linear-gradient(transparentize($screen-background,1) 50%, transparentize(darken($screen-background,10),0.75) 50%), linear-gradient(90deg,transparentize(#ff0000,0.94),transparentize(#00ff00,0.98),transparentize(#0000ff,0.94));
+				z-index: 2;
+				background-size: 100% 2px, 2px 100%;
+				pointer-events: none;
+			}
 		}
 	}
 }
