@@ -53,17 +53,18 @@ ST.layout = {
 			var numIncr = num + 1;
 			
 			if (userCards[num]) {
+				var cardImage = 'img/cards/' + card.image;
 				$grid.append(
 					`<figure class="card card-ok card-type-${card.type}" data-num="${num}" id="card-${num}" style="-webkit-box-ordinal-group:${numIncr};-ms-flex-order:${num};order:${num}">
 						<div class="inset">
 							<span class="number"><i>${num}</i></span>
 							<div class="bg">
-								<!-- <img src="${card.image}"> -->
-								<div class="bg-img" style="background-image: url(${card.image})"></div>
-								<div class="bg-img" style="background-image: url(${card.image})"></div>
-								<div class="bg-img" style="background-image: url(${card.image})"></div>
-								<div class="bg-img" style="background-image: url(${card.image})"></div>
-								<div class="bg-img" style="background-image: url(${card.image})"></div>
+								<!-- <img src="${cardImage}"> -->
+								<div class="bg-img" style="background-image: url(${cardImage})"></div>
+								<div class="bg-img" style="background-image: url(${cardImage})"></div>
+								<div class="bg-img" style="background-image: url(${cardImage})"></div>
+								<div class="bg-img" style="background-image: url(${cardImage})"></div>
+								<div class="bg-img" style="background-image: url(${cardImage})"></div>
 							</div>
 							<div class="caption">
 								<b class="title" data-text="${card.name}">${card.name}</b>
