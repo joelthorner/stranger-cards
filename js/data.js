@@ -40,6 +40,27 @@ ST.cards = {
 		location : 'Hawkins National Laboratory (outside)',
 		episode : 'Chapter Two: Trick or Treat, Freak (S1)'
 	},
+	6 : {
+		name : 'Dustin Henderson',
+		type : 0,
+		image : '6.jpg',
+		location : 'Hawkins Middle School (outside)',
+		episode : 'Chapter One: The Vanishing Of Will Byers (S1)'
+	},
+	7 : {
+		name : 'Nancy Wheeler',
+		type : 0,
+		image : '7.jpg',
+		location : 'Hawkins High School',
+		episode : 'Chapter One: The Vanishing Of Will Byers (S1)'
+	},
+	8 : {
+		name : 'Barbara Holland',
+		type : 0,
+		image : '8.jpg',
+		location : 'Hawkins High School',
+		episode : 'Chapter One: The Vanishing Of Will Byers (S1)'
+	},
 	11 : {
 		name : 'Eleven',
 		type : 0,
@@ -96,12 +117,19 @@ ST.cards = {
 		location : 'Hawkins quarry',
 		episode : 'Chapter Six: The Monster (S1)'
 	},
+	48 : {
+		name : 'Fake body of Will Byers',
+		type : 3,
+		image : '48.jpg',
+		location : 'Hawkins morgue',
+		episode : 'Chapter Four: The Body (S1)'
+	},
 	50 : {
 		name : 'The Demogorgon',
 		type : 1,
 		image : '50_2.jpg',
 		location : 'Hawkins Middle School',
-		episode : 'Chapter Eight: The Upside Down (S1)'
+		episode : 'Chapter fourth: The Upside Down (S1)'
 	},
 	52 : {
 		name : 'Will\'s last moment before disappearing',
@@ -116,13 +144,5 @@ ST.cards = {
 		image : '63.jpg',
 		location : 'Harrington pool (upside down)',
 		episode : 'Chapter seven: The Bathtub (S1)'
-	},
-	66 : {
-		name : 'Happy Steisy',
-		type : 0,
-		image : '66.jpg',
-		location : 'Hawkins High School',
-		episode : 'Chapter One: The Vanishing Of Will Byers (S1)'
 	}
-
 };
