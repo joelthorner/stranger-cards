@@ -182,14 +182,14 @@ main{
 		margin-top: rem(15px);
 		color: $yellow;
 	}
-	.location{
+	.episode{
 		margin-top: rem(10px);
-		font-size: rem(12px);
+		font-size: rem(10px);
 		display: block;
 		font-weight: bold;
 		line-height: 1.1;
 	}
-	.episode{
+	.season{
 		margin-top: rem(6px);
 		font-size: rem(10px);
 		display: block;
@@ -373,5 +373,9 @@ main{
 				pointer-events: none;
 			}
 		}
+	}
+	&.card-type-4{
+		// grid-column: auto/span 2;
+		// padding-bottom: calc(75% - 3.75rem);
 	}
 }
