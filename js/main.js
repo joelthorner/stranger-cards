@@ -1,4 +1,4 @@
-const DEFAULT_N_CARDS = 1;
+const DEFAULT_N_CARDS = 0;
 
 ST.manageData = {
 	init : function() {
@@ -11,12 +11,12 @@ ST.manageData = {
 		localforage.getItem('ST_userCards').then(function(result) {
 			var userCards = {};
 			// demo test
-			result = {
-				11 : 1,
-				3 : 1, 
-				23 : 2, 
-				66 : 20
-			};
+			// result = {
+			// 	11 : 1,
+			// 	3 : 1, 
+			// 	23 : 2, 
+			// 	66 : 20
+			// };
 			// end demo test
 
 			if (!result) {
@@ -74,8 +74,8 @@ ST.layout = {
 							</div>
 							<div class="caption">
 								<b class="title" data-text="${card.name}">${card.name}</b>
-								<span class="location">${card.location}</span>
 								<span class="episode">${card.episode}</span>
+								<span class="season">${card.season}</span>
 							</div>
 						</div>
 					</figure>`
